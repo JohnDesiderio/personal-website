@@ -1,0 +1,33 @@
+.bio-text {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    font-size: 20px;
+}
+
+.page-header {
+    font-size: 3rem;
+    padding-left: 5vw;
+}
+
+.experience-typography {
+    margin-left: 5vw; 
+    font-weight: 400px;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.form-box {
+    width: 100vw;
+    height: 70vh;
+}
+
+.form-components-holder {
+    width: 80vw;
+    height: 60vh;
+    background-color: lightgray;
+    border-radius: 16px;
+}
+
+.first-textfield {
+    margin-top: 40px;
+}

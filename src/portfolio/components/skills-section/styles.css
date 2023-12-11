@@ -1,0 +1,18 @@
+.skills-section {
+    margin-right: 5vw;
+    margin-left: 5vw; 
+}
+
+.skills-typography {
+    font-weight: 400px;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.skill-point {
+    margin-right: 10px; 
+}
+
+.skills-list {
+    margin-top: 1vh;
+}

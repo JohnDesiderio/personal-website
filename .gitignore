@@ -11,6 +11,9 @@
 # production
 /build
 
+# text files containing all env variables
+environment.txt
+
 # misc
 .DS_Store
 .env.local

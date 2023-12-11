@@ -1,0 +1,71 @@
+.header-box {
+    width: 100vw;
+    height: 10vh;
+    margin-bottom: 5vh;
+    padding-top: 5vh
+}
+
+.header-child-box-right {
+    width: 80vw;
+    float: right;
+}
+
+.header-child-box-left {
+    width: 20vw;
+    padding-left: 5vw;
+}
+
+.header-menu-box {
+    padding-right: 5vw;
+}
+
+.menu-item {
+    font-size: 19px; 
+    color: black;
+    height: 5vh;
+    width: 7vw;
+    position: relative; 
+}
+
+.selected-menu-item {
+    color: grey;
+}
+
+.selected-menu-item:hover {
+    cursor: default; 
+}
+
+.smaller-header {
+    width: 100vw;
+    margin-bottom: 10px;
+}
+
+.portfolio-page {
+    min-height: 100vh;
+}
+
+.icon-style {
+    height: 32px;
+    width: 32px;
+    margin-left: 15px;
+}
+
+.icon-style:hover {
+    cursor: pointer;
+}
+
+.linked-icon:hover {
+    color:  #0077b5;
+}
+
+.github-icon:hover {
+    color: #6cc644;
+}
+
+.side-box {
+    width: 20vw;
+}
+
+.center-box {
+    width: 60vw;
+}

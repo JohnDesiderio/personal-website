@@ -1,0 +1,21 @@
+.experience-box {
+    margin-left: 5vw;
+    margin-top: 0.5vw;
+}
+
+.experience-position {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.experience-company {
+    font-size: 30px;
+}
+
+.time-served {
+    font-size: 24px;
+}
+
+.job-detail {
+    font-size: 20px; 
+}
