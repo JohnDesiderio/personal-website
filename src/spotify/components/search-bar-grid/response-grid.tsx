@@ -3,13 +3,14 @@ import { Grid, Box, Button } from '@mui/material';
 import { ITrack } from '../../types';
 import ResponseGridItem from './response-grid-item';
 import './styles.css';
+import { addSelectedSongs } from './business-logic';
 
 interface IResponseGrid {
     items: Array<ITrack> | undefined,
+    resetResponse: React.Dispatch<React.SetStateAction<ITrack[] | undefined>>, 
+    resetText: React.Dispatch<React.SetStateAction<string>>,
+    selectedItems: Map<string, ITrack>;
 }
-
-// Exists outside the component for rendering purposes
-const mappedItems = new Map<string, ITrack>();
 
 const ResponseGrid:React.FC<IResponseGrid> = (props: IResponseGrid) => {
     
@@ -18,12 +19,10 @@ const ResponseGrid:React.FC<IResponseGrid> = (props: IResponseGrid) => {
     }
 
     const updateMappedItems = (item: ITrack) => {
-        if (mappedItems.has(item.id)) {
-            mappedItems.delete(item.id);
-            console.log('An item has been deleted');
+        if (props.selectedItems.has(item.id)) {
+            props.selectedItems.delete(item.id);
         } else {
-            mappedItems.set(item.id, item);
-            console.log('An item has been added');
+            props.selectedItems.set(item.id, item);
         }
     }
 
@@ -57,6 +56,12 @@ const ResponseGrid:React.FC<IResponseGrid> = (props: IResponseGrid) => {
                 </Grid>
             </Grid>
             <Button
+                onClick={() => {
+                    addSelectedSongs(props.selectedItems);
+                    props.resetResponse(undefined);
+                    props.resetText('');
+                    props.selectedItems.clear(); 
+                }}
                 sx={{
                     backgroundColor: '#1E328A',
                     color: '#EFF6FE',

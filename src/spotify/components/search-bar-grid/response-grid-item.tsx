@@ -12,7 +12,7 @@ const ResponseGridItem:React.FC<CheckboxProps & ITrack> = (
     }
 
     return (
-        <Grid item key={`response-grid-${props.uri}`}>
+        <Grid item>
             <Box className={`w-80 ${selected ? 'bg-gray-300' : 'bg-white'} rounded-md mt-2 h-16`}>
                 <Box display='flex' flexDirection='row'>
                     <Card className='h-16 w-16 hover:cursor-pointer' onClick={redirectToUrl}>

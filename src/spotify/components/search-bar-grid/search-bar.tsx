@@ -4,6 +4,9 @@ import { ITrack } from '../../types';
 import { assembleMusic, getAccessToken } from './business-logic';
 import ResponseGrid from './response-grid';
 
+// Exists outside the component for rendering purposes
+const mappedItems = new Map<string, ITrack>();
+
 const SearchBar:React.FC<{}> = () => {
     const [disableSearch, setDisableSearch] = useState<boolean>(true);
     const [text, setText] = useState<string>('');
@@ -52,7 +55,10 @@ const SearchBar:React.FC<{}> = () => {
                     onChange={onTextChange}
                 />
                 <Button
-                    onClick={() => {setClickedSearch(clickedSearch + 1)}}
+                    onClick={() => {
+                        setClickedSearch(clickedSearch + 1);
+                        mappedItems.clear();
+                    }}
                     disabled={disableSearch} 
                     variant='contained'
                     sx={{
@@ -67,9 +73,9 @@ const SearchBar:React.FC<{}> = () => {
                 </Button>
             </Box>
 
-            <ResponseGrid items={spotifyResponse}/>
+            <ResponseGrid items={spotifyResponse} resetResponse={setSpotifyResponse} resetText={setText} selectedItems={mappedItems}/>
 
-            <Modal
+            <Modal // Loading modal that waits for a user to receive information
                 disableAutoFocus
                 open={loadingModal}
             >

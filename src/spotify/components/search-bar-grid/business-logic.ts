@@ -1,7 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { ISpotifyResponse, ISpotfiyAccessToken, ISpotifyTrack, ISpotifyDanceability, ITrack } from "../../types";
 import { Observable, mergeMap } from 'rxjs';
-import { SetStateAction } from "react";
+import { doc, setDoc} from 'firebase/firestore';
+import { tracksCol } from '../../composables/useDb';
+
 /**
  * Authorization request to get permission to 
  * call Spotify API to search a track and
@@ -112,7 +114,7 @@ export const findDanceability = (
 
 /**
  * A void function that invokes a pause modal that does not close
- * until requests complete or an error happes within the code.
+ * until requests complete or an error happens within the code.
  * TODO: Implement an error modal declaring something didn't work.
  * @param {string} access_token - The token obtained from the Promise in getAccessToken()
  * @param {string} query - The user input from the textfield search component
@@ -122,8 +124,8 @@ export const findDanceability = (
 export const assembleMusic = (
     access_token: string,
     query: string,
-    handleLoadingModal: React.Dispatch<SetStateAction<boolean>>,
-    setResponse: React.Dispatch<SetStateAction<Array<ITrack> | undefined>>,
+    handleLoadingModal: React.Dispatch<React.SetStateAction<boolean>>,
+    setResponse: React.Dispatch<React.SetStateAction<Array<ITrack> | undefined>>,
 ) => {
     handleLoadingModal(true);
 
@@ -150,4 +152,21 @@ export const assembleMusic = (
     })
 
     songs$.subscribe().unsubscribe();
+}
+
+const setNewSong = async (key: string, value: ITrack) => {
+    const trackRef = doc(tracksCol, key);
+
+    return await setDoc(trackRef, {
+        id: value.id,
+        uri: value.uri,
+        metrics: value.metrics, 
+    });
+}
+
+export const addSelectedSongs = async (selectedSongs: Map<string, ITrack>) => {
+    selectedSongs.forEach((value: ITrack, key: string) => {
+        setNewSong(key, value)
+        .catch(e => console.log(e));
+    })
 }
