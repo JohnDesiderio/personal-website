@@ -14,7 +14,8 @@ const SearchBar:React.FC<{}> = () => {
     const [access_token, setAccessToken] = useState<string>('');
     const [spotifyResponse, setSpotifyResponse] = useState<Array<ITrack> | undefined>(undefined);
     const [loadingModal, setLoadingModal] = useState<boolean>(false);
-
+    const [thankYou, setThankYou] = useState<boolean>(false);
+    
     const onTextChange = (e: any) => {
         if (/(?!^$)([^\s])/.test(e.target.value)) {
             setDisableSearch(false);
@@ -73,7 +74,7 @@ const SearchBar:React.FC<{}> = () => {
                 </Button>
             </Box>
 
-            <ResponseGrid items={spotifyResponse} resetResponse={setSpotifyResponse} resetText={setText} selectedItems={mappedItems}/>
+            <ResponseGrid items={spotifyResponse} resetResponse={setSpotifyResponse} resetText={setText} selectedItems={mappedItems} thankYouModal={setThankYou}/>
 
             <Modal // Loading modal that waits for a user to receive information
                 disableAutoFocus
@@ -85,6 +86,37 @@ const SearchBar:React.FC<{}> = () => {
                         <Box className='text-3xl mt-4'>
                             Loading...
                         </Box>
+                    </Box>
+                </Box>
+            </Modal>
+            <Modal
+                disableAutoFocus
+                open={thankYou}
+            >
+                <Box display='flex' className='w-screen h-screen' justifyContent='center' alignItems='center'>
+                    <Box 
+                        sx={{
+                            overflowY: 'scroll',
+                        }}
+                        className='flex flex-col rounded-lg bg-gray-200 w-10/12 h-4/6' justifyContent='center' alignItems='center'
+                    >
+                        <Box className='text-md response-grid mt-4 px-10 lg:xl:2xl:px-20 lg:xl:2xl:text-3xl'>
+                            So here's the deal: you might literally have an influence on some curious stranger's
+                            music taste. It's still too early to tell the far reaching influences of all the songs
+                            you added. But you might have introduced a brand new to someone, and that's kinda cool!
+                            Thank you!
+                        </Box>
+                        <Button
+                            onClick={() => setThankYou(false)}
+                            variant='contained'
+                            sx={{
+                                backgroundColor: '#1E328A',
+                                color: '#EFF6FE',
+                                width: '120px',
+                                height: '56px',
+                                marginTop: '10px'
+                            }}
+                        >Exit</Button>
                     </Box>
                 </Box>
             </Modal>

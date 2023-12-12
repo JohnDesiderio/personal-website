@@ -1,5 +1,5 @@
-import React from 'react';
-import { Grid, Box, Button } from '@mui/material';
+import React, { useState } from 'react';
+import { Grid, Box, Button, Modal } from '@mui/material';
 import { ITrack } from '../../types';
 import ResponseGridItem from './response-grid-item';
 import './styles.css';
@@ -9,11 +9,13 @@ interface IResponseGrid {
     items: Array<ITrack> | undefined,
     resetResponse: React.Dispatch<React.SetStateAction<ITrack[] | undefined>>, 
     resetText: React.Dispatch<React.SetStateAction<string>>,
+    thankYouModal: React.Dispatch<React.SetStateAction<boolean>>,
     selectedItems: Map<string, ITrack>;
 }
 
 const ResponseGrid:React.FC<IResponseGrid> = (props: IResponseGrid) => {
-    
+    const [selectedSongsSize, setSelectedSongsSize] = useState<number>(0);
+
     if (props.items === undefined) {
         return <Grid container/>
     }
@@ -50,17 +52,23 @@ const ResponseGrid:React.FC<IResponseGrid> = (props: IResponseGrid) => {
                         <ResponseGridItem 
                             key={`response-grid-item-${idx}`}
                             {...item}
-                            onChange={() => updateMappedItems(item)}
+                            onChange={() => {
+                                updateMappedItems(item);
+                                setSelectedSongsSize(props.selectedItems.size)
+                            }}
                         />
                     )}
                 </Grid>
             </Grid>
             <Button
+                variant='contained'
+                disabled={selectedSongsSize === 0}
                 onClick={() => {
                     addSelectedSongs(props.selectedItems);
                     props.resetResponse(undefined);
                     props.resetText('');
                     props.selectedItems.clear(); 
+                    props.thankYouModal(true);
                 }}
                 sx={{
                     backgroundColor: '#1E328A',
@@ -68,7 +76,10 @@ const ResponseGrid:React.FC<IResponseGrid> = (props: IResponseGrid) => {
                     width: '120px',
                     height: '56px',
                 }}
-            >Submit</Button>
+            >
+                Submit
+            </Button>
+
         </Box>
     )
 }
