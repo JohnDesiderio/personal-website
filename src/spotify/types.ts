@@ -77,3 +77,97 @@ export interface ITrack {
     metrics: ISpotifyDanceability,
     external_url: string,
 }
+
+// Request user's profile on redirect page
+export interface IUserProfile {
+    country: string,
+    display_name: string,
+    email: string,
+    explicit_content: {
+        filter_enabled: boolean,
+        filter_locked: boolean,
+    },
+    external_urls: {
+        spotify: string,
+    },
+    followers: {
+        href: string,
+        total: number,
+    },
+    href: string,
+    id: string, 
+    images: Array<{
+        url: string,
+        height: number,
+        width: number,
+    }>,
+    product: string,
+    type: string,
+    uri: string,
+}
+
+// Request to create user's playlist
+export interface ICreatePlaylist {
+    collaborative: boolean,
+    description: string,
+    external_urls: Array<any>,
+    followers: {
+        href: string | null,
+        total: number,
+    },
+    href: string,
+    id: string, // most useful part from the playlist
+}
+
+// Keep track of this for a function???
+export interface IAddTracksToPlaylist {
+    snapshot_id: string,
+}
+
+export interface IPlaylistResponse {
+    href: string,
+    limit: number,
+    next: string,
+    offset: number,
+    previous: string,
+    total: number,
+    items: Array<IPlaylistProps>,
+}
+
+export interface IPlaylistProps {
+    collaborative: boolean,
+    description: string,
+    external_urls: {
+        spotify: string,
+    },
+    href: string,
+    id: string,
+    images: Array<{
+        url: string,
+        height: number,
+        width: number,
+    }>,
+    name: string,
+    owner: {
+        external_urls: {
+            spotify: string,
+        },
+        followers: {
+            href: string,
+            total: number,
+        },
+        href: string,
+        id: string,
+        type: string,
+        uri: string,
+        display_name: string | null,
+    },
+    public: boolean,
+    snapshot_id: string,
+    tracks: {
+        href: string,
+        total: number,
+    },
+    type: string,
+    uri: string,
+}

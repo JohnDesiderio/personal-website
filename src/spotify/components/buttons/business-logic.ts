@@ -4,7 +4,7 @@
  * verify the user retrieving the token 
  */
 
-const REDIRECT_URI : string = 'http://localhost:3000/spotify-mixer/mix-songs'//#/playlist-mixer/build-playlist';
+const REDIRECT_URI : string | undefined = process.env.REACT_APP_REDIRECT_URI;
 
 export const generateRandomString = (length:number):string => {
     let text = '';
@@ -30,15 +30,19 @@ export const redirectToAuthCodeFlow = async (clientId: string):Promise<void> => 
     const verifier = generateRandomString(128);
     const challenge = await generateCodeChallenge(verifier);
 
-    localStorage.setItem("verifier", verifier);
+    if (REDIRECT_URI !== undefined) {
+        localStorage.setItem("verifier", verifier);
 
-    const params = new URLSearchParams();
-    params.append("client_id", clientId);
-    params.append("response_type", "code");
-    params.append("redirect_uri", REDIRECT_URI);
-    params.append("scope", "playlist-modify-private playlist-modify-public user-read-private user-read-email")
-    params.append("code_challenge_method", "S256");
-    params.append("code_challenge", challenge);
+        const params = new URLSearchParams();
+        params.append("client_id", clientId);
+        params.append("response_type", "code");
+        params.append("redirect_uri", REDIRECT_URI);
+        params.append("scope", "playlist-modify-private playlist-modify-public user-read-private user-read-email")
+        params.append("code_challenge_method", "S256");
+        params.append("code_challenge", challenge);
 
-    document.location = `https://accounts.spotify.com/authorize?${params.toString()}`
+        document.location = `https://accounts.spotify.com/authorize?${params.toString()}`
+   } else {
+        console.error('Environment variables have not been set')
+   }
 }

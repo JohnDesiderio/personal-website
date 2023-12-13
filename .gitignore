@@ -12,7 +12,7 @@
 /build
 
 # text files containing all env variables
-environment.txt
+*environment.txt
 
 # misc
 .DS_Store

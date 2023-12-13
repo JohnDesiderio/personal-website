@@ -6,6 +6,7 @@ import SurveyCaller from '../components/experience-block/examples/survey-caller'
 import ServerCashier from '../components/experience-block/examples/server-cashier';
 import SkillsSection from '../components/skills-section/skills';
 import EducationSection from '../components/education/education';
+import FreelanceWeb from '../components/experience-block/examples/freelance-webdev';
 import '../styles.css';
 
 const Resume:React.FC<{}> = () => {
@@ -22,6 +23,12 @@ const Resume:React.FC<{}> = () => {
             >
                 Experience
             </Box>
+            <FreelanceWeb/>
+            <Divider
+                variant='middle'
+                className='visible lg:invisible'
+
+            />
             <InternTwo/>
             <Divider
                 variant='middle'
