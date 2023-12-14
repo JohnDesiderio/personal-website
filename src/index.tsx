@@ -11,7 +11,6 @@ import Projects from './portfolio/pages/Projects';
 import ContactMe from './portfolio/pages/Contact-Me';
 import RedirectURL from './spotify/pages/redirect-url';
 import SpotifyMixerAbout from './spotify/pages/about-mixer';
-import SpotifyAppThanks from './spotify/pages/thanks-page';
 
 const router = createBrowserRouter([
   {
@@ -55,10 +54,6 @@ const router = createBrowserRouter([
   {
     path: 'spotify-mixer/mix-songs',
     element: <RedirectURL/>
-  },
-  {
-    path: 'spotify-mixer/thank-you',
-    element: <SpotifyAppThanks/>
   },
 ])
 
