@@ -112,7 +112,9 @@ export const gatherPlaylists = async (
 export const placeTracksInPlaylist = async (
     playlistIds: Array<string>,
     access_token: string,
+    userWaiting: React.Dispatch<React.SetStateAction<number>>
 ) => {
+    userWaiting(0);
     const docIds = await assembleDocIds();
 
     const vals = new Array<number>;
@@ -145,10 +147,12 @@ export const placeTracksInPlaylist = async (
             playlistIds.forEach(playlist_id => {
                 addTracksToPlaylist(access_token, playlist_id, req_body);
             });
+            console.log("Just added tracks to the playlist");
         },
     });
 
     playlistSongs$.subscribe().unsubscribe();
+    userWaiting(3);
 }
 
 export const addTracksToPlaylist = async (
@@ -180,8 +184,8 @@ export const addTracksToPlaylist = async (
 export const assembleDocIds = async ():Promise<Array<track>> => {
     const tracks = await getDocs(tracksCol);
     const tracksIds = new Array<track>();
-
-    const db = getFirestore();
+    
+    const db = getFirestore(); 
 
     tracks.forEach(document => {
         tracksIds.push(document.data());
@@ -195,14 +199,13 @@ export const buildThePlaylist = async (
     access_token: string,
     userId: string,
     displayName: string,
-    //setResetModal: React.Dispatch<React.SetStateAction<boolean>>
-    //handleLoadingModal: React.Dispatch<React.SetStateAction<boolean>>
+    userWaiting: React.Dispatch<React.SetStateAction<number>>, 
 ):Promise<void> => {
     const playlistId = (await createThePlaylist(access_token, userId, displayName))?.data.id;
     const docIds = await assembleDocIds();
 
     if (playlistId !== undefined) {
-        // loading modal moment
+        userWaiting(0)
 
         const vals = new Array<number>(); // Danceability metrics to calculate outliers
 
@@ -224,15 +227,20 @@ export const buildThePlaylist = async (
                     req_body.length = 0;
                 }
 
-                req_body.push(item.uri)
+                req_body.push(item.uri);
             },
             error: () => {
                 console.log('There has been an error');
             },
             complete: () => {
                 addTracksToPlaylist(access_token, playlistId, req_body);
+                console.log("Just built a playlist");
+
             }
-        })
+        });
+
+        playlistSongs$.subscribe().unsubscribe();
+        userWaiting(3);
     }
 }
 

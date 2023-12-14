@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Card, Checkbox, CheckboxProps, Typography } from '@mui/material';
 import { IPlaylistProps } from '../../types';
+import SpotifyLogo from '../../../assets/SpotifyLogo.png';
 
 const PlaylistItem:React.FC<IPlaylistProps & CheckboxProps> = (
     props: IPlaylistProps & CheckboxProps,
@@ -13,6 +14,8 @@ const PlaylistItem:React.FC<IPlaylistProps & CheckboxProps> = (
             const image : { url: string, height: number, width: number } | undefined = props.images.at(0); 
             if (image !== undefined) {
                 setImage(image.url);
+            } else {
+                setImage(SpotifyLogo);
             }
         }
     }, [])
@@ -27,7 +30,7 @@ const PlaylistItem:React.FC<IPlaylistProps & CheckboxProps> = (
                         alt={props.name}
                     />
                 </Card>
-                <Box display='flex' flexDirection='column' className='h-16 w-52 hover:cursor-pointer font-bold text-sm'>
+                <Box display='flex' flexDirection='column' justifyContent='center' className='h-16 w-52 pl-2 hover:cursor-pointer font-bold text-sm'>
                     <Typography noWrap>
                         {props.name}
                     </Typography>
