@@ -42,7 +42,8 @@ const SearchBar:React.FC<{}> = () => {
         if (clickedSearch !== 0) {
             assembleMusic(access_token, text, setLoadingModal, setSpotifyResponse); 
         }
-    }, [clickedSearch, access_token, text])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [clickedSearch])
 
     return (
         <Box display='flex' flexDirection='column' className='mt-7 w-full' justifyContent='center' alignItems='center'>

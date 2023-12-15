@@ -147,7 +147,6 @@ export const placeTracksInPlaylist = async (
             playlistIds.forEach(playlist_id => {
                 addTracksToPlaylist(access_token, playlist_id, req_body);
             });
-            console.log("Just added tracks to the playlist");
         },
     });
 
@@ -234,8 +233,6 @@ export const buildThePlaylist = async (
             },
             complete: () => {
                 addTracksToPlaylist(access_token, playlistId, req_body);
-                console.log("Just built a playlist");
-
             }
         });
 
