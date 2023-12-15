@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Link } from '@mui/material';
+import { Box } from '@mui/material';
 import HeaderMenu from './header-menu';
 import './styles.css';
 import MenuItem from './menu-item';

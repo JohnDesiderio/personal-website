@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Button } from '@mui/material';
 import { redirectToAuthCodeFlow } from './business-logic';
 
-const client_id = "9dc3cfe6f686431f878571165c601f37";
+const client_id = process.env.REACT_APP_CLIENT_ID;
 
 const ButtonGrid:React.FC<{}> = () => {
     return (
@@ -29,7 +29,9 @@ const ButtonGrid:React.FC<{}> = () => {
             </Button>
             <Button
                 onClick={() => {
-                    redirectToAuthCodeFlow(client_id);
+                    if (client_id !== undefined) {
+                        redirectToAuthCodeFlow(client_id);
+                    }
                 }}
                 variant='contained'
                 sx={{
