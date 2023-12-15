@@ -1,5 +1,11 @@
 # Netlify Redirect Page
 /* /index.html 200
 / /
-/twenty-one /twenty-one
-/twenty-two /twenty-two
+/portfolio /portfolio
+/portfolio/resume /portfolio/resume 
+/portfolio/about /portfolio/about 
+/portfolio/projects /portfolio/projects 
+/portfolio/contact-me /portfolio/contact-me  
+/spotify-mixer /spotify-mixer
+/spotify-mixer/about /spotify-mixer/about
+/spotify-mixer/mix-songs /spotify-mixer/mix-songs
