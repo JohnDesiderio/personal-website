@@ -39,6 +39,7 @@ const Portfolio:React.FC<{}> = () => {
                         src={johndesiderio}
                         height={1200}
                         width={900}
+                        alt='John Francis Desiderio'
                     >
                     </img>
                 </Box>

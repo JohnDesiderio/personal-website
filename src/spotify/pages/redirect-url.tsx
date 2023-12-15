@@ -30,16 +30,16 @@ const RedirectURL:React.FC<{}> = () => {
     }
 
     useEffect(() => {
-        const presentChoice = async (code: string) => {
-            const accessTokenRequest = await getAccessToken(code);
-            if (accessTokenRequest?.status === 200) {
-                setAccessToken(accessTokenRequest.data.access_token);
+        const presentChoice = async (params: string | null) => {
+            if (params !== null) {
+                const accessTokenRequest = await getAccessToken(params);
+                if (accessTokenRequest?.status === 200) {
+                    setAccessToken(accessTokenRequest.data.access_token);
+                }
             }
         }
 
-        if (params) {
-            presentChoice(params);
-        }
+        presentChoice(params);
     }, [])
     
     useEffect(() => {

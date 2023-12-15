@@ -42,7 +42,7 @@ const SearchBar:React.FC<{}> = () => {
         if (clickedSearch !== 0) {
             assembleMusic(access_token, text, setLoadingModal, setSpotifyResponse); 
         }
-    }, [clickedSearch])
+    }, [clickedSearch, access_token, text])
 
     return (
         <Box display='flex' flexDirection='column' className='mt-7 w-full' justifyContent='center' alignItems='center'>

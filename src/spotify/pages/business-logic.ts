@@ -117,7 +117,7 @@ export const placeTracksInPlaylist = async (
     userWaiting(0);
     const docIds = await assembleDocIds();
 
-    const vals = new Array<number>;
+    const vals = new Array<number>();
 
     docIds.forEach(item => {
         vals.push(item.metrics.danceability);

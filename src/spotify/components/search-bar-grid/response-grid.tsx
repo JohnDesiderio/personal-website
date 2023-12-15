@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Box, Button, Modal } from '@mui/material';
+import { Grid, Box, Button } from '@mui/material';
 import { ITrack } from '../../types';
 import ResponseGridItem from './response-grid-item';
 import './styles.css';

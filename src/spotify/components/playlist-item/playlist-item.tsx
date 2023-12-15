@@ -10,14 +10,19 @@ const PlaylistItem:React.FC<IPlaylistProps & CheckboxProps> = (
     const [image, setImage] = useState<string>('');
 
     useEffect(() => { // Used to address issue that photo playlist photo might be undefined
-        if (props.images.length > 0) {
-            const image : { url: string, height: number, width: number } | undefined = props.images.at(0); 
-            if (image !== undefined) {
-                setImage(image.url);
-            } else {
-                setImage(SpotifyLogo);
+        
+        const imageDecider = (props : IPlaylistProps & CheckboxProps) => {
+            if (props.images.length > 0) {
+                const image : { url: string, height: number, width: number } | undefined = props.images.at(0); 
+                if (image !== undefined) {
+                    setImage(image.url);
+                } else {
+                    setImage(SpotifyLogo);
+                }
             }
         }
+
+        imageDecider(props);
     }, [])
 
     return (
