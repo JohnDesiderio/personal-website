@@ -102,6 +102,24 @@ const SpotifyMixerAbout:React.FC<{}> = () => {
                 The application is still in development mode, and I am awaiting Spotify's approval to put the application into production mode. If you would want to work on the application,
                 shoot me an email at johnfrancisdesiderio2@gmail.com and I will add you to the team.
             </Box>
+            <Divider/>
+            <Box
+                className='text-2xl font-medium mt-4'
+            >
+                Can I see the source code?
+            </Box>
+            <Box
+                className='text-lg mt-1 mb-1'
+            >
+                Yeah, sure! The root directory for the code is&nbsp;
+                <Link
+                    underline='none'
+                    href='https://github.com/JohnDesiderio/personal-website/tree/main/src/spotify'
+                >
+                    here
+                </Link>
+                .
+            </Box>
         </Box>
     )
 }
