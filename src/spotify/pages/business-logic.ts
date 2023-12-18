@@ -6,10 +6,6 @@ import { track, IUserProfile, ICreatePlaylist, IAddTracksToPlaylist, ISpotfiyAcc
 import translate from 'translate';
 import { Observable, from, filter } from 'rxjs';
 
-export const getAllDocuments = async (): Promise<number> => {
-    return (await getDocs(tracksCol)).size;
-}
-
 // This is different from the getAccessToken in /search-bar-grid/business-logic
 export const getAccessToken = async (
     code: string,

@@ -12,7 +12,7 @@ const details:Array<string> = [
     'Designed application through the asynchronous reactive programming library RxJS',
     'Awaiting approval from Spotify to put the application into production mode (the app is available for a demo)'
 ]
-const link = 'https://github.com/JohnDesiderio/playlist-app'
+const link = 'https://www.johndesiderio.com/spotify-mixer';
 
 const SpotifyMixer:React.FC<{}> = () => {
     const props: IProject = {

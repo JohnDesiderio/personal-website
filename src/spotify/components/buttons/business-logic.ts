@@ -1,3 +1,5 @@
+import { getDocs } from 'firebase/firestore';
+import { tracksCol } from '../../composables/useDb';
 /**
  * This file handles the information before a user accesses Spotify Account!
  * generateRandomString and generateCodeChallenge are security measures to
@@ -45,4 +47,8 @@ export const redirectToAuthCodeFlow = async (clientId: string):Promise<void> => 
    } else {
         console.error('Environment variables have not been set')
    }
+}
+
+export const getAllDocuments = async (): Promise<number> => {
+    return (await getDocs(tracksCol)).size;
 }
