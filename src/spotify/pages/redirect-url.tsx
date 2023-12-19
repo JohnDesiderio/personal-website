@@ -3,6 +3,7 @@ import { Grid, Box, Button, CircularProgress } from '@mui/material';
 import { IPlaylistProps, IPlaylistResponse } from '../types';
 import PlaylistItem from '../components/playlist-item/playlist-item';
 import { getAccessToken, getUserProfile, gatherPlaylists, placeTracksInPlaylist, buildThePlaylist } from './business-logic';
+import { IoMdClose } from "react-icons/io";
 import './styles.css';
 
 const selectedPlaylists = new Set<string>();
@@ -128,11 +129,17 @@ const RedirectURL:React.FC<{}> = () => {
         return (
             <Grid 
                 container 
-                className='spotify-mixer-grid bg-blue-100 pt-24'
+                className='spotify-mixer-grid bg-blue-100 pt-10'
                 display='flex'
                 alignItems='center'
                 flexDirection='column'
             >
+                <Box display='flex' flexDirection='row-reverse' className='w-full'>
+                    <IoMdClose
+                        className='mr-12 h-12 w-12 hover:cursor-pointer'
+                        onClick={() => setUserFlow(1)}
+                    />
+                </Box>
                 <Box className='text-2xl'>Choose the Playlist(s)!</Box>
                 <Box 
                     display='flex'

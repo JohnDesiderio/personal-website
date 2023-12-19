@@ -139,11 +139,9 @@ export const placeTracksInPlaylist = async (
         })
     )
     .subscribe({
-        next: () => {
-            console.log('yerr pt 2 ')
-        },
+        next: () => {},
         error: () => {},
-        complete: () => {
+        complete: () => { // This adds the remaining tracks left in the database
             playlistIds.forEach(playlist_id => {
                 addTracksToPlaylist(access_token, playlist_id, req_body);
             });
@@ -220,12 +218,11 @@ export const buildThePlaylist = async (
         playlistSongs$
         .pipe(
             filter(track => outlierDetection(track.metrics.danceability, bounds)),
-            map(track => {
+            map((track) => {
                 if (req_body.length === 100) {
                     addTracksToPlaylist(access_token, playlistId, req_body);
                     req_body.length = 0;
                 }
-    
                 req_body.push(track.uri);
             }),
         )

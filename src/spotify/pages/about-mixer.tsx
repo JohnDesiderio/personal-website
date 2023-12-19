@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Divider, Link } from '@mui/material';
-
+import { Box, Divider, Link, Button } from '@mui/material';
+import './styles.css'
 
 const SpotifyMixerAbout:React.FC<{}> = () => {
     
@@ -12,11 +12,27 @@ const SpotifyMixerAbout:React.FC<{}> = () => {
             flexDirection='column' 
             justifyContent='start'
             className='mx-8 mt-8'
-        >
-            <Box
-                className='text-6xl'
-            >
-                Spotify Playlist Mixer About
+        >   
+            <Box display='flex' flexDirection='row' className='w-full mb-4'>
+                <Box
+                    className='trans text-xl 
+                    md:text-3xl
+                    lg:xl:2xl:text-5xl w-2/3'
+                >
+                    Spotify Playlist Mixer About
+                </Box>
+                <Box display='flex' flexDirection='row-reverse' className='w-1/3'>
+                    <Button
+                        href='/spotify-mixer'
+                        variant='contained'
+                        sx={{
+                            height: '50px',
+                            width: '160px'
+                        }}
+                    >
+                        Return to App
+                    </Button>
+                </Box>
             </Box>
             <Divider/>
             <Box
