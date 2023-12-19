@@ -133,7 +133,7 @@ export const assembleMusic = (
 
     const songs$ = getSearchResults(access_token, query)
     .pipe(
-        mergeMap(song => findDanceability(access_token, song))
+        mergeMap(song => findDanceability(access_token, song)),
     )
 
     songs$.subscribe({

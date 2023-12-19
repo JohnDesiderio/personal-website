@@ -4,7 +4,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { generate } from 'random-words';
 import { track, IUserProfile, ICreatePlaylist, IAddTracksToPlaylist, ISpotfiyAccessToken, IPlaylistResponse } from '../types';
 import translate from 'translate';
-import { Observable, from, filter } from 'rxjs';
+import { Observable, from, filter, map } from 'rxjs';
 
 // This is different from the getAccessToken in /search-bar-grid/business-logic
 export const getAccessToken = async (
@@ -125,10 +125,9 @@ export const placeTracksInPlaylist = async (
     const req_body = new Array<string>();
 
     playlistSongs$
-    .pipe(filter(track => outlierDetection(track.metrics.danceability, bounds)))
-    .subscribe({
-        next: (item) => {
-
+    .pipe(
+        filter(track => outlierDetection(track.metrics.danceability, bounds)),
+        map(track => {
             if (req_body.length === 100) {
                 playlistIds.forEach(playlist_id => {
                     addTracksToPlaylist(access_token, playlist_id, req_body);
@@ -136,7 +135,12 @@ export const placeTracksInPlaylist = async (
                 req_body.length = 0; 
             }
             
-            req_body.push(item.uri);
+            req_body.push(track.uri);
+        })
+    )
+    .subscribe({
+        next: () => {
+            console.log('yerr pt 2 ')
         },
         error: () => {},
         complete: () => {
@@ -214,15 +218,20 @@ export const buildThePlaylist = async (
         const req_body = new Array<string>();
 
         playlistSongs$
-        .pipe(filter(track => outlierDetection(track.metrics.danceability, bounds)))
-        .subscribe({
-            next: (item) => {
+        .pipe(
+            filter(track => outlierDetection(track.metrics.danceability, bounds)),
+            map(track => {
                 if (req_body.length === 100) {
                     addTracksToPlaylist(access_token, playlistId, req_body);
                     req_body.length = 0;
                 }
-
-                req_body.push(item.uri);
+    
+                req_body.push(track.uri);
+            }),
+        )
+        .subscribe({
+            next: () => {
+                console.log('yerr');
             },
             error: () => {
                 console.log('There has been an error');
