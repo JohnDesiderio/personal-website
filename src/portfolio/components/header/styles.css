@@ -69,3 +69,7 @@
 .center-box {
     width: 60vw;
 }
+
+.trans {
+    transition: 0.1s ease;
+}

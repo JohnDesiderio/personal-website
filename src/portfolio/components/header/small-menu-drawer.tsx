@@ -21,7 +21,7 @@ const SmallMenuDrawer:React.FC<ISmallMenuDrawer> = (props: ISmallMenuDrawer) => 
                 }}
             >
                 <ListItemButton 
-                    href='./#/portfolio'
+                    href='/portfolio'
                     disabled={props.value===0}
                 >
                     Portfolio
@@ -29,7 +29,7 @@ const SmallMenuDrawer:React.FC<ISmallMenuDrawer> = (props: ISmallMenuDrawer) => 
                 <Divider/>
                 <ListItemButton 
                     className='bg-red-400'
-                    href='#/portfolio/resume'
+                    href='/portfolio/resume'
                     disabled={props.value===1}
                 >
                     Resume
@@ -37,7 +37,7 @@ const SmallMenuDrawer:React.FC<ISmallMenuDrawer> = (props: ISmallMenuDrawer) => 
                 <Divider/>
                 <ListItemButton 
                     className='bg-red-400'
-                    href='#/portfolio/projects'
+                    href='/portfolio/projects'
                     disabled={props.value===2}
                 >
                     Projects
@@ -45,7 +45,7 @@ const SmallMenuDrawer:React.FC<ISmallMenuDrawer> = (props: ISmallMenuDrawer) => 
                 <Divider/>
                 <ListItemButton 
                     className='bg-red-400'
-                    href='#/portfolio/about'
+                    href='/portfolio/about'
                     disabled={props.value===3}
                 >
                     About
@@ -53,10 +53,24 @@ const SmallMenuDrawer:React.FC<ISmallMenuDrawer> = (props: ISmallMenuDrawer) => 
                 <Divider/>
                 <ListItemButton 
                     className='bg-red-400'
-                    href='#/portfolio/contact-me'
+                    href='/portfolio/contact-me'
                     disabled={props.value===4}
                 >
                     Contact Me
+                </ListItemButton>
+                <Divider/>
+                <ListItemButton 
+                    className='bg-red-400'
+                    href='https://github.com/JohnDesiderio'
+                >
+                    Github Profile
+                </ListItemButton>
+                <Divider/>
+                <ListItemButton 
+                    className='bg-red-400'
+                    href="https://www.linkedin.com/in/derio/"
+                >
+                    LinkedIn
                 </ListItemButton>
             </List>
         </Box>

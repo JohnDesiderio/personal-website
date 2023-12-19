@@ -25,36 +25,49 @@ const router = createBrowserRouter([
   },
   { // Rewrite header to use as outlet for everything going forward!
     path: 'portfolio',
-    element: <Portfolio/>,
-  },
-  {
-    path: 'portfolio/resume',
-    element: <Resume/>
-  },
-  {
-    path: 'portfolio/about',
-    element: <About/>
-  },
-  {
-    path: 'portfolio/projects',
-    element: <Projects/>
-  },
-  {
-    path: 'portfolio/contact-me',
-    element: <ContactMe/>
+    element: <><Outlet/></>,
+    children: [ 
+      {
+        index: true, 
+        element: <Portfolio/>,
+      },
+      {
+        path: 'resume',
+        element: <Resume/>
+      },
+      {
+        path: 'about',
+        element: <About/>
+      },
+      {
+        path: 'projects',
+        element: <Projects/>
+      },
+      {
+        path: 'contact-me',
+        element: <ContactMe/>
+      },
+    ],
   },
   {
     path: 'spotify-mixer',
-    element: <SpotifyMixer/>
+    element: <><Outlet/></>,
+    children: [
+      {
+        index: true,
+        element: <SpotifyMixer/>
+      },
+      { 
+        path: 'about',
+        element: <SpotifyMixerAbout/>
+      },
+      {
+        path: 'mix-songs',
+        element: <RedirectURL/>
+      },
+    ],
   },
-  { 
-    path: 'spotify-mixer/about',
-    element: <SpotifyMixerAbout/>
-  },
-  {
-    path: 'spotify-mixer/mix-songs',
-    element: <RedirectURL/>
-  },
+
 ])
 
 const root = ReactDOM.createRoot(

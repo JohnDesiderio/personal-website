@@ -16,7 +16,7 @@ const MenuItem:React.FC<IMenuItem> = (props: IMenuItem) => {
             to={`/portfolio/${props.link}`}
         >
             <Box
-                className={`${props.toggled ? 'selected-menu-item' : 'unselected-menu-item hover:text-red-400'} menu-item`} 
+                className={`${props.toggled ? 'selected-menu-item' : 'unselected-menu-item hover:text-red-400'} menu-item trans`} 
                 justifyContent='center'
                 display='flex'
                 alignItems='center'

@@ -65,7 +65,7 @@ const ButtonGrid:React.FC<{}> = () => {
                         }}
                         className='flex flex-col rounded-lg bg-gray-200 w-10/12 h-4/6' justifyContent='center' alignItems='center'
                     >
-                        <Box className='text-md response-grid mt-4 px-10 lg:xl:2xl:px-20 lg:xl:2xl:text-3xl'>
+                        <Box className='text-md mt-4 px-10 lg:xl:2xl:px-20 lg:xl:2xl:text-3xl'>
                             It would appear that the cloud storage is empty... So I think you should start adding some music and
                             and get the party rolling!!!
                         </Box>
