@@ -15,55 +15,56 @@ import SpotifyMixerAbout from './spotify/pages/about-mixer';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div><Outlet/></div>,
+    element: <div className="w-screen h-screen"><Outlet /></div>,
     children: [
       {
         path: '/',
-        element: <Homepage/>
+        element: <Homepage />
       },
     ]
   },
   { // Rewrite header to use as outlet for everything going forward!
     path: 'portfolio',
-    element: <><Outlet/></>,
-    children: [ 
+    element:
+      <div className='w-screen h-min'><Outlet /></div>,
+    children: [
       {
-        index: true, 
-        element: <Portfolio/>,
+        index: true,
+        element: <Portfolio />,
       },
       {
         path: 'resume',
-        element: <Resume/>
+        element: <Resume />
       },
       {
         path: 'about',
-        element: <About/>
+        element: <About />
       },
       {
         path: 'projects',
-        element: <Projects/>
+        element: <Projects />
       },
       {
         path: 'contact-me',
-        element: <ContactMe/>
+        element: <ContactMe />
       },
     ],
   },
   {
     path: 'spotify-mixer',
-    element: <><Outlet/></>,
+    element: <><Outlet /></>,
     children: [
       {
         index: true,
-        element: <SpotifyMixer/>
+        element: <SpotifyMixer />
       },
-      { 
+      {
         path: 'about',
-        element: <SpotifyMixerAbout/>
+        element: <SpotifyMixerAbout />
       },
       {
         path: 'mix-songs',
-        element: <RedirectURL/>
+        element: <RedirectURL />
       },
     ],
   },
@@ -74,7 +75,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <RouterProvider router={router}/>
+  <RouterProvider router={router} />
 );
 
 // If you want to start measuring performance in your app, pass a function
