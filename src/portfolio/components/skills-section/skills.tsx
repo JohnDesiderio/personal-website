@@ -4,11 +4,11 @@ import './styles.css';
 
 const skills: Array<string> = [
   'JavaScript', 'TypeScript', 'Node.js', 'React.js', /*'Redux',*/ 'RxJS', 'Material-UI', 'NestJS', 'Express', 'Fastify', 'MongoDB',
-  'HTML5/CSS3', 'NextJS', 'Tailwind CSS', 'Responsive Design', 'MongoDB', 'Firebase', 'SQL Server', 'UI/UX Design', 'Full-Stack Development',
-  'REST API\'s', 'CRUD Design', 'Front-End Development', 'Back-End Development', 'UML', 'Java', 'Spring Boot', 'Spring', 'Tomcat', 'Python', 'Flask',
-  'Django', 'Data Science', 'Data Analytics', 'Recommender Systems', 'Information Filtering', 'Cloud Programming', 'Content-Based Recommendation',
-  'SQL', 'C++', 'C', 'Algorithms', 'Simulation and Modeling', 'Simpy', 'SAAS', 'Design Patterns', 'Data Structures', 'CI/CD',
-  'Object Oriented Programming', 'Jest', 'GraphQL', 'Webpack', 'Agile/Scrum Methodology',
+  'HTML5/CSS3', 'NextJS', 'Tailwind CSS', 'Responsive Design', 'Firebase', 'SQL Server', 'UI/UX Design', 'Full-Stack Development',
+  'REST API\'s', 'CRUD Design', 'Front-End Development', 'Back-End Development', 'UML', 'Java', 'Spring Boot', 'Spring', 'Tomcat',
+  'Python', 'Flask', 'Django', 'Data Science', 'Data Analytics', 'Recommender Systems', 'Information Filtering', 'Cloud Programming',
+  'Docker', 'Content-Based Recommendation', 'SQL', 'C++', 'C', 'Algorithms', 'Simulation and Modeling', 'Simpy', 'SAAS',
+  'Design Patterns', 'Data Structures', 'CI/CD', 'Object Oriented Programming', 'Jest', 'GraphQL', 'Webpack', 'Agile/Scrum Methodology',
 ];
 
 const SkillsSection: React.FC<{}> = () => {

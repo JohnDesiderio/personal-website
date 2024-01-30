@@ -7,6 +7,7 @@ import DiscreteEvent from '../components/projects/examples/event-simulator';
 import Bookstore from '../components/projects/examples/bookstore';
 import PeripheralSimulator from '../components/projects/examples/peripheral-simulator';
 import ProgressiveWebApp from '../components/projects/examples/progressive-web-app';
+import SocialMediaDemo from '../components/projects/examples/social-media-demo';
 
 export const Projects: React.FC<{}> = () => {
   return (
@@ -17,6 +18,7 @@ export const Projects: React.FC<{}> = () => {
       >
         Projects
       </Box>
+      <SocialMediaDemo />
       <SpotifyMixer />
       <PeripheralSimulator />
       <GroupMeBot />

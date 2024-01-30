@@ -11,7 +11,7 @@ import '../styles.css';
 
 const Resume: React.FC<{}> = () => {
   return (
-    <Box className='bg-red-50 w-full'>
+    <Box className='bg-red-50 w-full overflow-x-hidden'>
       <Box display='flex' flexDirection='column' className='w-full'>
         <Header value={1} />
         <Box

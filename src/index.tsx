@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   { // Rewrite header to use as outlet for everything going forward!
     path: 'portfolio',
     element:
-      <div className='w-screen h-min'><Outlet /></div>,
+      <div className='w-screen h-min overflow-x-hidden'><Outlet /></div>,
     children: [
       {
         index: true,
